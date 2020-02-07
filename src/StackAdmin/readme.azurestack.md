@@ -47,7 +47,7 @@ directive:
       parameter-name: Location
     set:
       default:
-        script: '(Get-AzLocation)[0].Name'
+        script: '(Get-AzLocation)[0].Location'
   - where:
       parameter-name: ResourceName
     set:
