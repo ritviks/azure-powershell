@@ -73,9 +73,33 @@ directive:
       subject: (Location)
     remove: true.
 
+    # Rename ResourceName parameter to Name
+  - where:
+      parameter-name: ResourceName
+    set:
+      parameter-name: Name
+
+    # Default to Format-List for the LoadBalancer commandlets as there are many important fields
+  - where:
+      model-name: LoadBalancer
+    set:
+      suppress-format: true
+
     # Default to Format-List for the Quota commandlets as there are many important fields
   - where:
       model-name: Quota
+    set:
+      suppress-format: true
+
+    # Default to Format-List for the PublicIpAddress commandlets as there are many important fields
+  - where:
+      model-name: PublicIpAddress
+    set:
+      suppress-format: true
+
+    # Default to Format-List for the VirtualNetwork commandlets as there are many important fields
+  - where:
+      model-name: VirtualNetwork
     set:
       suppress-format: true
 
@@ -134,6 +158,18 @@ directive:
     set:
       default:
         script: '50'
+
+    #rename properties
+  - where:
+      model-name: VirtualNetwork
+      property-name: ConfigurationStateHostError
+    set:
+      property-name: ConfigurationStateHostErrors
+  - where:
+      model-name: VirtualNetwork
+      property-name: ConfigurationStateVirtualNetworkInterfaceError
+    set:
+      property-name: ConfigurationStateVirtualNetworkInterfaceErrors
 
 subject-prefix: ''
 module-version: 0.0.1
