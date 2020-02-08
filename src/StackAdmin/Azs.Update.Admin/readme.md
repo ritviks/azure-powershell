@@ -96,6 +96,8 @@ directive:
       parameter-name: Location
     set:
       parameter-name: Name
+      default:
+        script: -join("System.",(Get-AzLocation)[0].Location)
   - where:
       subject: (.*)Run$
       parameter-name: RunName
